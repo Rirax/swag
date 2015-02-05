@@ -6,51 +6,60 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/24 04:55:28 by rlechapt          #+#    #+#             */
-/*   Updated: 2015/01/24 06:55:14 by rlechapt         ###   ########.fr       */
+/*   Updated: 2015/02/05 09:21:24 by rlechapt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate_a(int *pile_a, int len_a)
+void	rotate_a(t_env *e, t_flags *f)
 {
 	int	tmp;
 	int	i;
 
-	if (len_a < 2)
+	if (e->len_a < 2)
 		return ;
-	tmp = pile_a[0];
+	tmp = e->pile_a[0];
 	i = 0;
-	while (i < len_a)
+	while (i < e->len_a)
 	{
-		pile_a[i] = pile_a[i + 1];
+		e->pile_a[i] = e->pile_a[i + 1];
 		i++;
 	}
-	pile_a[len_a - 1] = tmp;
-	ft_putstr("ra ");
+	e->pile_a[e->len_a - 1] = tmp;
+	e->count += 1;
+	if (f->v == 1)
+		put_action(e, "ra");
+	e->str = ft_strjoin(e->str, "ra ");
 }
 
-void	rotate_b(int *pile_b, int len_b)
+void	rotate_b(t_env *e, t_flags *f)
 {
 	int	tmp;
 	int	i;
 
-	if (len_b < 2)
+	if (e->len_b < 2)
 		return ;
-	tmp = pile_b[0];
+	tmp = e->pile_b[0];
 	i = 0;
-	while (i < len_b)
+	while (i < e->len_b)
 	{
-		pile_b[i] = pile_b[i + 1];
+		e->pile_b[i] = e->pile_b[i + 1];
 		i++;
 	}
-	pile_b[len_b - 1] = tmp;
-	ft_putstr("rb ");
+	e->pile_b[e->len_b - 1] = tmp;
+	e->count += 1;
+	if (f->v == 1)
+		put_action(e, "rb");
+	e->str = ft_strjoin(e->str, "rb ");
 }
 
-void	rotate_r(int *pile_a, int len_a, int *pile_b, int len_b)
+void	rotate_r(t_env *e, t_flags *f)
 {
-	rotate_a(pile_a, len_a);
-	rotate_b(pile_b, len_b);
-	ft_putstr("rr ");
+	rotate_a(e, f);
+	rotate_b(e, f);
+	e->count -= 1;
+	if (f->v == 1)
+		put_action(e, "rr");
+	e->str = ft_strjoin(e->str, "rr ");
 }

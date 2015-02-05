@@ -6,7 +6,7 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 15:02:42 by rlechapt          #+#    #+#             */
-/*   Updated: 2014/11/12 16:17:01 by rlechapt         ###   ########.fr       */
+/*   Updated: 2015/02/02 19:06:23 by rlechapt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 int		ft_atoi(const char *str);
+long	ft_atol(const char *str);
 char	*ft_strtrim(const char *s);
 void	ft_putchar(char c);
 void	ft_putstr(char const *s);

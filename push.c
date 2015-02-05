@@ -6,56 +6,62 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/24 04:33:41 by rlechapt          #+#    #+#             */
-/*   Updated: 2015/01/24 06:50:02 by rlechapt         ###   ########.fr       */
+/*   Updated: 2015/02/05 09:22:41 by rlechapt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_a(int *pile_a, int *len_a, int *pile_b, int *len_b)
+void	push_a(t_env *e, t_flags *f)
 {
 	int	i;
 
-	if (len_b == 0)
+	if (e->len_b == 0)
 		return ;
-	i = *len_a;
+	i = e->len_a;
 	while (i > 0)
 	{
-		pile_a[i] = pile_a[i - 1];
+		e->pile_a[i] = e->pile_a[i - 1];
 		i--;
 	}
-	pile_a[0] = pile_b[0];
-	*len_a += 1;
-	*len_b -= 1;
+	e->pile_a[0] = e->pile_b[0];
+	e->len_a += 1;
+	e->len_b -= 1;
 	i = 0;
-	while (i < *len_b)
+	while (i < e->len_b)
 	{
-		pile_b[i] = pile_b[i + 1];
+		e->pile_b[i] = e->pile_b[i + 1];
 		i++;
 	}
-	ft_putstr("pa ");
+	e->count += 1;
+	if (f->v == 1)
+		put_action(e, "pa");
+	e->str = ft_strjoin(e->str, "pa ");
 }
 
-void	push_b(int *pile_b, int *len_b, int *pile_a, int *len_a)
+void	push_b(t_env *e, t_flags *f)
 {
 	int	i;
 
-	if (len_a == 0)
+	if (e->len_a == 0)
 		return ;
-	i = *len_b;
+	i = e->len_b;
 	while (i > 0)
 	{
-		pile_b[i] = pile_b[i - 1];
+		e->pile_b[i] = e->pile_b[i - 1];
 		i--;
 	}
-	pile_b[0] = pile_a[0];
-	*len_b += 1;
-	*len_a -= 1;
+	e->pile_b[0] = e->pile_a[0];
+	e->len_b += 1;
+	e->len_a -= 1;
 	i = 0;
-	while (i < *len_a)
+	while (i < e->len_a)
 	{
-		pile_a[i] = pile_a[i + 1];
+		e->pile_a[i] = e->pile_a[i + 1];
 		i++;
 	}
-	ft_putstr("pb ");
+	e->count += 1;
+	if (f->v == 1)
+		put_action(e, "pb");
+	e->str = ft_strjoin(e->str, "pb ");
 }

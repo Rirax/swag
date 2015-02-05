@@ -6,7 +6,7 @@
 #    By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/11 12:24:25 by rlechapt          #+#    #+#              #
-#    Updated: 2014/11/11 22:40:30 by rlechapt         ###   ########.fr        #
+#    Updated: 2015/02/02 19:07:05 by rlechapt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ ft_strnstr.c \
 ft_strcmp.c \
 ft_strncmp.c \
 ft_atoi.c \
+ft_atol.c \
 ft_isalpha.c \
 ft_isdigit.c \
 ft_isalnum.c \

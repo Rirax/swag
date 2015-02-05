@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/01/23 03:45:03 by rlechapt          #+#    #+#              #
-#    Updated: 2015/01/26 02:54:28 by rlechapt         ###   ########.fr        #
+#    Created: 2015/02/02 16:45:04 by rlechapt          #+#    #+#              #
+#    Updated: 2015/02/03 12:37:04 by rlechapt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,26 +14,30 @@ NAME = push_swap
 
 SRC = \
 main.c \
+check_param.c \
 swap.c \
 push.c \
 rotate.c \
 reverse_rotate.c \
-algo.c
+algo.c \
+error.c \
 
-EXT = $(SRC:.c=.o)
+OBJ = $(SRC:.c=.o)
+FLAGS = -Wall -Wextra -Werror
+LIB = -L./libft -lft
 
 all: $(NAME)
 
 $(NAME):
-		make -C ./libft
-		gcc -o $(NAME) $(SRC) -L libft -lft
+	make -C libft/
+	gcc -I libft/includes/ -c $(SRC)
+	gcc -o $(NAME) $(OBJ) $(LIB)
 
 clean:
-		make clean -C ./libft
-		rm -f $(EXT)
+	rm -f $(OBJ)
 
 fclean: clean
-		make fclean -C ./libft
-		rm -f $(NAME)
+	rm -f $(NAME)
+	rm -f *~
 
 re: fclean all

@@ -6,51 +6,60 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/24 05:20:37 by rlechapt          #+#    #+#             */
-/*   Updated: 2015/01/24 06:57:05 by rlechapt         ###   ########.fr       */
+/*   Updated: 2015/02/05 09:16:04 by rlechapt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	reverse_rotate_a(int *pile_a, int len_a)
+void	reverse_rotate_a(t_env *e, t_flags *f)
 {
 	int	tmp;
 	int	i;
 
-	if (len_a < 2)
+	if (e->len_a < 2)
 		return ;
-	i = len_a - 1;
-	tmp = pile_a[i];
+	i = e->len_a - 1;
+	tmp = e->pile_a[i];
 	while (i >= 0)
 	{
-		pile_a[i] = pile_a[i - 1];
+		e->pile_a[i] = e->pile_a[i - 1];
 		i--;
 	}
-	pile_a[0] = tmp;
-	ft_putstr("rra ");
+	e->pile_a[0] = tmp;
+	e->count += 1;
+	if (f->v == 1)
+		put_action(e, "rra");
+	e->str = ft_strjoin(e->str, "rra ");
 }
 
-void	reverse_rotate_b(int *pile_b, int len_b)
+void	reverse_rotate_b(t_env *e, t_flags *f)
 {
 	int	tmp;
 	int	i;
 
-	if (len_b < 2)
+	if (e->len_b < 2)
 		return ;
-	i = len_b - 1;
-	tmp = pile_b[i];
+	i = e->len_b - 1;
+	tmp = e->pile_b[i];
 	while (i >= 0)
 	{
-		pile_b[i] = pile_b[i - 1];
+		e->pile_b[i] = e->pile_b[i - 1];
 		i--;
 	}
-	pile_b[0] = tmp;
-	ft_putstr("rrb ");
+	e->pile_b[0] = tmp;
+	e->count += 1;
+	if (f->v == 1)
+		put_action(e, "rrb");
+	e->str = ft_strjoin(e->str, "rrb ");
 }
 
-void	reverse_rotate_r(int *pile_a, int len_a, int *pile_b, int len_b)
+void	reverse_rotate_r(t_env *e, t_flags *f)
 {
-	reverse_rotate_a(pile_a, len_a);
-	reverse_rotate_b(pile_b, len_b);
-	ft_putstr("rrr ");
+	reverse_rotate_a(e, f);
+	reverse_rotate_b(e, f);
+	e->count -= 1;
+	if (f->v == 1)
+		put_action(e, "rrr");
+	e->str = ft_strjoin(e->str, "rrr");
 }

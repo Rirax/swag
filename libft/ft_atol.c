@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/07 10:18:23 by rlechapt          #+#    #+#             */
-/*   Updated: 2015/02/02 18:52:42 by rlechapt         ###   ########.fr       */
+/*   Created: 2015/02/02 16:28:33 by rlechapt          #+#    #+#             */
+/*   Updated: 2015/02/02 18:53:24 by rlechapt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/libft.h"
 
-void	*ft_memalloc(size_t size)
+long	ft_atol(const char *str)
 {
-	void	*str;
-	size_t	i;
+	int		i;
+	int		sign;
+	long	val;
 
 	i = 0;
-	if ((str = malloc(sizeof(*str) * (size))) == NULL)
-		return (NULL);
-	while (i < size)
+	sign = 1;
+	val = 0;
+	while (((str[i] >= 9 && str[i] <= 13) || str[i] == 32) && str[i])
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		((char *)str)[i] = '\0';
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
-	return (str);
+	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
+	{
+		val = (val * 10) + (str[i] - 48);
+		i++;
+	}
+	return (val * sign);
 }
