@@ -6,11 +6,11 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 10:18:23 by rlechapt          #+#    #+#             */
-/*   Updated: 2015/02/02 18:52:42 by rlechapt         ###   ########.fr       */
+/*   Updated: 2015/03/11 06:02:15 by rlechapt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "push_swap.h"
 
 void	*ft_memalloc(size_t size)
 {

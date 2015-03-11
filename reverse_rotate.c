@@ -6,7 +6,7 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/24 05:20:37 by rlechapt          #+#    #+#             */
-/*   Updated: 2015/02/05 09:16:04 by rlechapt         ###   ########.fr       */
+/*   Updated: 2015/02/24 17:00:18 by rlechapt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	reverse_rotate_a(t_env *e, t_flags *f)
 	}
 	e->pile_a[0] = tmp;
 	e->count += 1;
+	ft_putstr("rra ");
 	if (f->v == 1)
-		put_action(e, "rra");
-	e->str = ft_strjoin(e->str, "rra ");
+		stack_status(e);
 }
 
 void	reverse_rotate_b(t_env *e, t_flags *f)
@@ -49,9 +49,9 @@ void	reverse_rotate_b(t_env *e, t_flags *f)
 	}
 	e->pile_b[0] = tmp;
 	e->count += 1;
+	ft_putstr("rrb ");
 	if (f->v == 1)
-		put_action(e, "rrb");
-	e->str = ft_strjoin(e->str, "rrb ");
+		stack_status(e);
 }
 
 void	reverse_rotate_r(t_env *e, t_flags *f)
@@ -59,7 +59,7 @@ void	reverse_rotate_r(t_env *e, t_flags *f)
 	reverse_rotate_a(e, f);
 	reverse_rotate_b(e, f);
 	e->count -= 1;
+	ft_putstr("rrr ");
 	if (f->v == 1)
-		put_action(e, "rrr");
-	e->str = ft_strjoin(e->str, "rrr");
+		stack_status(e);
 }

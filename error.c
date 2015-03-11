@@ -6,7 +6,7 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/02 11:04:45 by rlechapt          #+#    #+#             */
-/*   Updated: 2015/02/05 08:50:09 by rlechapt         ###   ########.fr       */
+/*   Updated: 2015/03/11 05:59:01 by rlechapt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_puterror(char *str)
 	exit(0);
 }
 
-void	check_error(t_env *e, t_flags *f, char **av)
+void	check_error(t_env *e, char **av)
 {
 	int	i;
 	int	j;

@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/08 15:23:59 by rlechapt          #+#    #+#             */
-/*   Updated: 2014/11/30 16:07:58 by rlechapt         ###   ########.fr       */
+/*   Created: 2014/11/08 17:58:20 by rlechapt          #+#    #+#             */
+/*   Updated: 2015/03/11 05:57:00 by rlechapt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "push_swap.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_atoi(const char *str)
 {
-	size_t			i;
-	unsigned char	*s3;
-	unsigned char	*s4;
+	int	i;
+	int	sign;
+	int	val;
 
-	s3 = (unsigned char*)s1;
-	s4 = (unsigned char*)s2;
 	i = 0;
-	if (n == 0)
-		return (0);
-	while (s3[i] == s4[i] && i < n - 1)
+	sign = 1;
+	val = 0;
+	while (((str[i] >= 9 && str[i] <= 13) || str[i] == 32) && str[i])
 		i++;
-	return (s3[i] - s4[i]);
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
+	{
+		val = (val * 10) + (str[i] - 48);
+		i++;
+	}
+	return (val * sign);
 }

@@ -6,7 +6,7 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/24 04:33:41 by rlechapt          #+#    #+#             */
-/*   Updated: 2015/02/05 09:22:41 by rlechapt         ###   ########.fr       */
+/*   Updated: 2015/03/04 18:52:18 by rlechapt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	push_a(t_env *e, t_flags *f)
 		i++;
 	}
 	e->count += 1;
+	ft_putstr("pa ");
 	if (f->v == 1)
-		put_action(e, "pa");
-	e->str = ft_strjoin(e->str, "pa ");
+		stack_status(e);
 }
 
 void	push_b(t_env *e, t_flags *f)
@@ -61,7 +61,7 @@ void	push_b(t_env *e, t_flags *f)
 		i++;
 	}
 	e->count += 1;
+	ft_putstr("pb ");
 	if (f->v == 1)
-		put_action(e, "pb");
-	e->str = ft_strjoin(e->str, "pb ");
+		stack_status(e);
 }

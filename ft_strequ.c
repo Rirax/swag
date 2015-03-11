@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/04 10:25:52 by rlechapt          #+#    #+#             */
-/*   Updated: 2014/11/30 16:15:56 by rlechapt         ###   ########.fr       */
+/*   Created: 2014/11/07 14:53:15 by rlechapt          #+#    #+#             */
+/*   Updated: 2015/03/11 05:59:21 by rlechapt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "push_swap.h"
 
-char	*ft_strchr(const char *s, int c)
+int ft_strequ(char const *s1, char const *s2)
 {
 	int	i;
 
 	i = 0;
-	while (s[i] != '\0' && s[i] != (char)c)
-	{
+	while (s1[i] == s2[i] && s1[i] != '\0')
 		i++;
-	}
-	if (s[i] == (char)c)
-	{
-		return ((char *)&(s[i]));
-	}
-	return (NULL);
+	if (s1[i] == '\0' && s2[i] == '\0')
+		return (1);
+	return (0);
 }

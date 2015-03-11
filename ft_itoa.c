@@ -1,32 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/10 15:06:21 by rlechapt          #+#    #+#             */
-/*   Updated: 2014/11/30 16:14:24 by rlechapt         ###   ########.fr       */
+/*   Created: 2014/11/10 15:16:45 by rlechapt          #+#    #+#             */
+/*   Updated: 2015/03/11 05:57:20 by rlechapt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "push_swap.h"
 
-void	ft_putnbr_fd(int n, int fd)
+static int	ft_digit_count(int n)
 {
+	int				i;
+
+	i = 0;
+	if (n == 0)
+		return (1);
+	while (n)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
+}
+
+char		*ft_itoa(int n)
+{
+	int				i;
+	int				sign;
+	char			*s;
 	unsigned int	nb;
 
+	sign = 0;
 	nb = n;
 	if (n < 0)
 	{
-		ft_putchar_fd('-', fd);
+		sign = 1;
 		nb = -n;
 	}
-	if (nb > 9)
+	i = ft_digit_count(n);
+	if ((s = (char *)ft_memalloc(i + sign + 1)) == NULL)
+		return (NULL);
+	while (i--)
 	{
-		ft_putnbr_fd((nb / 10), fd);
-		ft_putnbr_fd((nb % 10), fd);
+		s[i + sign] = (nb % 10) + '0';
+		nb /= 10;
 	}
-	else
-		ft_putchar_fd((nb + '0'), fd);
+	if (sign == 1)
+		s[0] = '-';
+	return (s);
 }

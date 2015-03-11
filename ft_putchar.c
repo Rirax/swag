@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/05 10:34:24 by rlechapt          #+#    #+#             */
-/*   Updated: 2014/11/30 16:01:04 by rlechapt         ###   ########.fr       */
+/*   Created: 2014/11/10 10:50:02 by rlechapt          #+#    #+#             */
+/*   Updated: 2015/03/11 05:57:41 by rlechapt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "push_swap.h"
 
-int	ft_isprint(int c)
+void	ft_putchar(char c)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
+	write(1, &c, 1);
 }

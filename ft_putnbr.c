@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 15:38:47 by rlechapt          #+#    #+#             */
-/*   Updated: 2014/11/30 16:20:29 by rlechapt         ###   ########.fr       */
+/*   Created: 2014/11/10 11:51:03 by rlechapt          #+#    #+#             */
+/*   Updated: 2015/03/11 05:57:56 by rlechapt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "push_swap.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_putnbr(int n)
 {
-	int	i;
+	unsigned int	nb;
 
-	i = 0;
-	while (s[i] != '\0')
+	nb = n;
+	if (n < 0)
 	{
-		i++;
+		ft_putchar('-');
+		nb = -n;
 	}
-	return (i);
+	if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+		ft_putchar(nb + '0');
 }

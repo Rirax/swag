@@ -6,7 +6,7 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 12:01:34 by rlechapt          #+#    #+#             */
-/*   Updated: 2015/02/05 09:39:21 by rlechapt         ###   ########.fr       */
+/*   Updated: 2015/03/11 06:00:14 by rlechapt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	check_param(t_flags *f, char **av)
 				f->t = 5;
 			if (av[1][i] == 'v' || av[1][i] == 't')
 				f->d = 1;
-			if (av[1][i] >= 48 && av[1][i] <= 57 ||
+			if ((av[1][i] >= 48 && av[1][i] <= 57) ||
 					av[1][i] == 'v' || av[1][i] == 't')
 				;
 			else
@@ -43,10 +43,13 @@ void	check_param(t_flags *f, char **av)
 
 void	settings(t_env *e, t_flags *f, int ac, char **av)
 {
+	if (ac < 2)
+		exit(0);
 	check_param(f, av);
 	if (f->d == 1)
 	{
 		e->len_a = ac - 2;
+		e->len_max = e->len_a;
 		e->len_b = 0;
 		e->count = 0;
 		e->i = 2;
@@ -55,10 +58,11 @@ void	settings(t_env *e, t_flags *f, int ac, char **av)
 	else
 	{
 		e->len_a = ac - 1;
+		e->len_max = e->len_a;
 		e->len_b = 0;
 		e->count = 0;
 		e->i = 1;
 		e->j = 0;
 	}
-	check_error(e, f, av);
+	check_error(e, av);
 }

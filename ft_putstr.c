@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/07 14:02:51 by rlechapt          #+#    #+#             */
-/*   Updated: 2014/11/30 16:20:49 by rlechapt         ###   ########.fr       */
+/*   Created: 2014/11/10 10:55:05 by rlechapt          #+#    #+#             */
+/*   Updated: 2015/03/11 06:02:40 by rlechapt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "push_swap.h"
 
-char	*ft_strmap(char const *s, char (*f)(char))
+void	ft_putstr(char const *s)
 {
-	int		i;
-	int		a;
-	char	*s2;
+	int	i;
 
 	i = 0;
-	a = ft_strlen((char *)s);
-	s2 = ft_strnew(a);
-	if (s2)
+	if (!s)
+		return ;
+	while (s[i] != '\0')
 	{
-		while (i < a)
-		{
-			s2[i] = f(s[i]);
-			i++;
-		}
-		s2[i] = '\0';
-		return (s2);
+		ft_putchar(s[i]);
+		i++;
 	}
-	return (0);
 }
